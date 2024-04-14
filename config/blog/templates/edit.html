@@ -1,8 +1,20 @@
+{%extends "base.html"%}
+{%load static%} {#스태틱 파일 불러오기 #}
+
+{% block title %}
+    수정하기
+{% endblock title %}
+
+
+{% block content %}
 <h1>edit 페이지</h1>
 
-<form action="{% url 'update' edit_blog.id %}" method="POST">
+<form action="{% url 'update' edit_blog.id %}" method="POST" enctype="multipart/form">
     {% csrf_token %}
     <input type="text" name="title" value="{{ edit_blog.title }}"/>
     <textarea name="content" id="" cols="30">{{ edit_blog.content }}</textarea>
+    <input type="file" name= "image" />
     <input type="submit" value="수정하기" />
 </form>
+
+{% endblock content %}

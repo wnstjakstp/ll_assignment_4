@@ -1,11 +1,32 @@
+{%extends "base.html"%}
+{%load static%} {#스태틱 파일 불러오기 #}
+
+
+{% block title %}
+    상세 페이지
+{% endblock title %}
+
+{%block extrahead%}
+<link rel="stylesheet" href="{%static 'blog/css/style.css'%}">
+{%endblock extrahead%}
+
+{%block content%}
 <h1>블로그 상세 페이지</h1>
 <br/>
 <hr/>
 <h2>{{blog.title}}</h2>
 <p>{{blog.content}}</p>
+
+
+{%if blog.image%}
+<img src="{{blog.image.url}}" alt="image" width="200">
+{% endif%}
+
 <p>{{blog.created_at}}</p>
+
 
 <hr/>
 <a href="{% url 'home' %}"> 홈 </a>
 <a href="{% url 'edit' blog.id %}"> 수정하기 </a>
 <a href="{% url 'delete' blog.id %}"> 삭제하기 </a>
+{%endblock content%}
